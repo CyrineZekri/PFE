@@ -49,8 +49,8 @@ export default function Login() {
         theme: "light",
       });
       setLoading(false); 
-      if (decoded.user.role === "Admin") {
-        navigate("/admin/dashboard"); // Redirect to admin dashboard 
+      if (decoded.user.role === "Client") {
+        navigate("/client/dashboard/my-reservations"); // Redirect to client dashboard 
         // to go to the car he was consulting 
         const redirectPath = localStorage.getItem("redirectAfterLogin");
         console.log("in login detail ," + redirectPath);
@@ -59,8 +59,12 @@ export default function Login() {
           navigate(redirectPath); // Navigate to the stored location
         }
         if (redirectPath === null) {
-          navigate("/client/dashboard"); // Redirect to client dashboard 
+          navigate("/client/dashboard/my-reservations"); // Redirect to client dashboard if he wasnt consulting any cars 
         }
+      }
+      if (decoded.user.role === "Admin") {
+        navigate("/admin/dashboard"); // Redirect to admin dashboard 
+
       }
     } catch (error) {
       console.log(error);

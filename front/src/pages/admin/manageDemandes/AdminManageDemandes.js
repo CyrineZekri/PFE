@@ -28,10 +28,12 @@ export default function AdminManageDemandes() {
 
   useEffect(() => {
     fetchReservations();
+    // eslint-disable-next-line
   }, []);
   const fetchReservations = async () => {
     try {
       const data = await getAllReservations();
+      // eslint-disable-next-line
       setReservations(data);
       setFilteredReservations(data);
       setLoading(false);
